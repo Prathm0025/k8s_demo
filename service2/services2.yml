@@ -2,6 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: service2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service2
   template:
     metadata:
       labels:
@@ -9,7 +14,7 @@ metadata:
     spec:
       containers:
       - name: service2
-        image: prathm0025/service2:v1
+        image: your-dockerhub-username/service2:v1
         ports:
         - containerPort: 3002
         env:
