@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service2
+  template:
+    metadata:
+      labels:
+        app: service2
+    spec:
+      containers:
+      - name: service2
+        image: prathm0025/service2:v1
+        ports:
+        - containerPort: 3002
+        env:
+        - name: REDIS_URL
+          value: "redis://redis:6379"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service2
+spec:
+  type: NodePort
+  ports:
+    - port: 3002
+      targetPort: 3002
+      nodePort: 30002
+  selector:
+    app: service2
