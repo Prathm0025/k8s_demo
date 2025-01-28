@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: service2
-        image: your-dockerhub-username/service2:v1
+        image: prathm0025/service2:v1
         ports:
         - containerPort: 3002
         env:
